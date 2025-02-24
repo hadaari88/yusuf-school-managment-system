@@ -1,0 +1,54 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="text-primary mb-0">Timetable</h2>
+      <a href="{% url 'timetable_add' %}" class="btn btn-outline-success">
+        <i class="fa fa-plus"></i> Add Timetable
+      </a>
+    </div>
+    {% if timetables %}
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>Subject</th>
+              <th>Teacher</th>
+              <th>Day</th>
+              <th>Time</th>
+              <th>Location</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for timetable in timetables %}
+            <tr>
+              <td>{{ timetable.subject.name }}</td>
+              <td>{{ timetable.teacher.first_name }} {{ timetable.teacher.last_name }}</td>
+              <td>{{ timetable.day_of_week }}</td>
+              <td>{{ timetable.start_time }} - {{ timetable.end_time }}</td>
+              <td>{{ timetable.classroom }}</td>
+              <td class="text-center">
+                <a href="{% url 'timetable_detail' timetable.id %}" class="btn btn-info btn-sm">
+                  <i class="fa fa-eye"></i> View
+                </a>
+                <a href="{% url 'timetable_edit' timetable.id %}" class="btn btn-warning btn-sm">
+                  <i class="fa fa-edit"></i> Edit
+                </a>
+                <a href="{% url 'timetable_delete' timetable.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this entry?');">
+                  <i class="fa fa-trash"></i> Delete
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="text-center text-danger">No timetable entries available.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg p-4 w-50 mx-auto">
+    <h2 class="text-center text-primary mb-4">Timetable Details</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Subject</th>
+            <td>{{ timetable.subject.name }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Teacher</th>
+            <td>{{ timetable.teacher.first_name }} {{ timetable.teacher.last_name }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Day</th>
+            <td>{{ timetable.day_of_week }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Time</th>
+            <td>{{ timetable.start_time }} - {{ timetable.end_time }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Location</th>
+            <td>{{ timetable.classroom }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-4 text-center">
+      <a href="{% url 'timetable_edit' timetable.id %}" class="btn btn-warning">
+        <i class="fa fa-edit"></i> Edit
+      </a>
+      <a href="{% url 'timetable_delete' timetable.id %}" class="btn btn-danger">
+        <i class="fa fa-trash"></i> Delete
+      </a>
+      <a href="{% url 'timetable_list' %}" class="btn btn-secondary">
+        <i class="fa fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

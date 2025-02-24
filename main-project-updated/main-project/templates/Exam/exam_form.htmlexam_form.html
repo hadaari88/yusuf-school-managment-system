@@ -1,0 +1,23 @@
+{% extends "Home/base.html" %}
+{% load static %}
+{% block title %}Delete Exam{% endblock %}
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="card shadow-lg" style="width: 40rem;">
+    <div class="card-header bg-danger text-white text-center">
+      <h2>Delete Exam</h2>
+    </div>
+    <div class="card-body text-center">
+      <p>Are you sure you want to delete the exam "<strong>{{ exam.name }}</strong>"?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+        <a href="{% url 'exam_detail' exam.slug %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+    <div class="card-footer text-center">
+      <small>&copy; {{ now|date:"Y" }} Your School Name. All rights reserved.</small>
+    </div>
+  </div>
+</div>
+{% endblock %}

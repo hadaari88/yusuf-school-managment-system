@@ -1,0 +1,20 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+  <h2 class="mb-4 text-center">Salary Payment Details</h2>
+  <div class="card p-4">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Staff:</strong> {{ salary.staff.username }}</li>
+      <li class="list-group-item"><strong>Amount:</strong> {{ salary.amount }}</li>
+      <li class="list-group-item"><strong>Date Paid:</strong> {{ salary.date_paid }}</li>
+      <li class="list-group-item"><strong>Remarks:</strong> {{ salary.remarks }}</li>
+    </ul>
+    <div class="mt-3 text-center">
+      <a href="{% url 'edit_salary_payment' salary.pk %}" class="btn btn-warning">Edit</a>
+      <a href="{% url 'delete_salary_payment' salary.pk %}" class="btn btn-danger">Delete</a>
+      <a href="{% url 'salary_list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

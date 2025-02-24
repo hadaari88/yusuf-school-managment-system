@@ -1,0 +1,12 @@
+{% extends "Home/base.html" %}
+{% block title %}Teacher Details{% endblock %}
+{% block content %}
+  <h1>Teacher Details</h1>
+  <p><strong>Name:</strong> {{ teacher.first_name }} {{ teacher.last_name }}</p>
+  <p><strong>Department:</strong> {{ teacher.department }}</p>
+  {% if teacher.profile_image %}
+    <img src="{{ teacher.profile_image.url }}" alt="Profile Image" style="max-width:200px;">
+  {% endif %}
+  <br>
+  <a href="{% url 'teacher_list' %}">Back to Teachers List</a>
+{% endblock %}

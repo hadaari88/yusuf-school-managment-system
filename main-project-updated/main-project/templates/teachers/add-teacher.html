@@ -1,0 +1,23 @@
+{% extends "Home/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+  <div class="card shadow-sm" style="width: 400px;">
+    <div class="card-header text-center bg-primary text-white">
+      <h3 class="mb-0">Add Teacher</h3>
+    </div>
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary">Add Teacher</button>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-center">
+      <a href="{% url 'teacher_list' %}" class="btn btn-secondary">Back to Teacher List</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

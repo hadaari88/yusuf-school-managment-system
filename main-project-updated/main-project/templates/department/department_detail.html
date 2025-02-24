@@ -1,0 +1,10 @@
+{% extends 'Home/base.html' %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <h2>{{ department.name }}</h2>
+        <p>{{ department.description }}</p>
+        <a href="{% url 'department_list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+{% endblock %}

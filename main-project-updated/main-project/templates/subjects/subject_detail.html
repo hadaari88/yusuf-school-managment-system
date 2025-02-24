@@ -1,0 +1,10 @@
+{% extends 'Home/base.html' %}
+{% block body %}
+<h2>{{ subject.name }}</h2>
+<p><strong>Code:</strong> {{ subject.code }}</p>
+<p><strong>Credits:</strong> {{ subject.credits }}</p>
+<p><strong>Description:</strong> {{ subject.description }}</p>
+<a href="{% url 'edit_subject' subject.pk %}">Edit</a>
+<a href="{% url 'subject_list' %}">Back to Subjects</a>
+{% endblock %}
+

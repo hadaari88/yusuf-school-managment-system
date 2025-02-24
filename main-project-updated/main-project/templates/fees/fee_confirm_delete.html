@@ -1,0 +1,23 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-danger text-white text-center">
+          <h1 class="h4 mb-0">Delete Fee</h1>
+        </div>
+        <div class="card-body text-center">
+          <p class="lead">Are you sure you want to delete the fee on {{ object.date }}?</p>
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+          </form>
+          <a href="{% url 'fees:fee-list' %}" class="btn btn-secondary mt-3">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

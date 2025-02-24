@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h2 class="mt-3">Transactions</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Type</th>
+          <th>Person</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fee in fees %}
+        <tr>
+          <td>Fee Payment</td>
+          <td>{{ fee.student.username }}</td>
+          <td>${{ fee.amount }}</td>
+          <td>{{ fee.date_paid }}</td>
+        </tr>
+        {% endfor %}
+        {% for expense in expenses %}
+        <tr>
+          <td>Expense</td>
+          <td>{{ expense.description }}</td>
+          <td>${{ expense.amount }}</td>
+          <td>{{ expense.date }}</td>
+        </tr>
+        {% endfor %}
+        {% for salary in salaries %}
+        <tr>
+          <td>Salary Payment</td>
+          <td>{{ salary.staff.username }}</td>
+          <td>${{ salary.amount }}</td>
+          <td>{{ salary.date_paid }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

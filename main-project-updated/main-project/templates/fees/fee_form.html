@@ -1,0 +1,27 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h1 class="h4 mb-0">{% if object %}Edit Fee{% else %}Add Fee{% endif %}</h1>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center">
+              <button type="submit" class="btn btn-success">Save</button>
+            </div>
+          </form>
+          <div class="text-center mt-3">
+            <a href="{% url 'fees:fee-list' %}" class="btn btn-secondary">Back to Fees List</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

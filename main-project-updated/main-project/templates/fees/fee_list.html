@@ -1,0 +1,53 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h2 class="h4 mb-0">Fees List</h2>
+        </div>
+        <div class="card-body">
+          <div class="mb-3 text-center">
+            <a href="{% url 'fees:fee-add' %}" class="btn btn-success">Add Fee</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Date</th>
+                  <th>Debit</th>
+                  <th>Credit</th>
+                  <th>Amount</th>
+                  <th>Balance</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for fee in fees %}
+                <tr>
+                  <td>{{ fee.date }}</td>
+                  <td>{{ fee.debit }}</td>
+                  <td>{{ fee.credit }}</td>
+                  <td>{{ fee.amount }}</td>
+                  <td>{{ fee.balance }}</td>
+                  <td>
+                    <a href="{% url 'fees:fee-edit' fee.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'fees:fee-delete' fee.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                  </td>
+                </tr>
+                {% empty %}
+                <tr>
+                  <td colspan="6" class="text-center">No fees recorded.</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

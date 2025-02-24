@@ -1,0 +1,29 @@
+{% extends "Home/base.html" %}
+{% load static %}
+{% block title %}Exam Details{% endblock %}
+{% block content %}
+<div class="container" style="min-height: 80vh;">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white text-center">
+      <h2>Exam Details</h2>
+    </div>
+    <div class="card-body">
+      <h3>{{ exam.name }}</h3>
+      <p><strong>Subject:</strong> {{ exam.subject }}</p>
+      <p><strong>Type:</strong> {{ exam.exam_type }}</p>
+      <p><strong>Date:</strong> {{ exam.date }}</p>
+      {% if exam.description %}
+      <p><strong>Description:</strong> {{ exam.description }}</p>
+      {% endif %}
+      <div class="mt-3">
+        <a href="{% url 'edit_exam' exam.slug %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'delete_exam' exam.slug %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'exam_list' %}" class="btn btn-secondary">Back to Exam List</a>
+      </div>
+    </div>
+    <div class="card-footer text-center">
+      <small>&copy; {{ now|date:"Y" }} Your School Name. All rights reserved.</small>
+    </div>
+  </div>
+</div>
+{% endblock %}

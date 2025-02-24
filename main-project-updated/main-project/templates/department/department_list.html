@@ -1,0 +1,35 @@
+{% extends 'Home/base.html' %}
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <h2>Departments</h2>
+        <a href="{% url 'department_create' %}" class="btn btn-primary">Add Department</a>
+        
+        {% if departments %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for department in departments %}
+                <tr>
+                    <td>{{ department.name }}</td>
+                    <td>{{ department.description }}</td>
+                    <td>
+                        <a href="{% url 'department_edit' department.pk %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'department_delete' department.pk %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No departments found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
